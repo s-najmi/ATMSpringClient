@@ -33,9 +33,9 @@ public class QuestionnaireUserAuthService implements IQuestionnaireUserAuthServi
     @Override
     public QuestionnaireUserAuthDTO save(QuestionnaireUserAuthDTO dto) {
         QuestionnaireUserAuth questionnaireUserAuth = mapper.toEntity(dto);
-        UserDTO userDTO = userService.getByID(questionnaireUserAuth.getUser().getId());
+        MyUserDTO myUserDTO = userService.getByID(questionnaireUserAuth.getMyUser().getId());
         QuestionnaireDTO questionnaireDTO = questionnaireService.getByID(questionnaireUserAuth.getQuestionnaire().getId());
-        questionnaireUserAuth.setUser(userMapper.toEntity(userDTO));
+        questionnaireUserAuth.setMyUser(userMapper.toEntity(myUserDTO));
         questionnaireUserAuth.setQuestionnaire(questionnaireMapper.toEntity(questionnaireDTO));
         return mapper.toDTO(repository.save(questionnaireUserAuth));
     }
@@ -44,7 +44,7 @@ public class QuestionnaireUserAuthService implements IQuestionnaireUserAuthServi
     public QuestionnaireUserAuthDTO update(QuestionnaireUserAuthDTO dto) {
         QuestionnaireUserAuth questionnaireUserAuth = mapper.toEntity(dto);
         QuestionnaireUserAuth newQuestionnaireUserAuth = mapper.toEntity(getByID(questionnaireUserAuth.getId()));
-        newQuestionnaireUserAuth.setUser(userMapper.toEntity(userService.getByID((Long)questionnaireUserAuth.getUser().getId())));
+        newQuestionnaireUserAuth.setMyUser(userMapper.toEntity(userService.getByID((Long)questionnaireUserAuth.getMyUser().getId())));
         newQuestionnaireUserAuth.setQuestionnaire(questionnaireMapper.toEntity(questionnaireService.getByID((Long)questionnaireUserAuth.getQuestionnaire().getId())));
         return mapper.toDTO(repository.save(newQuestionnaireUserAuth));
     }

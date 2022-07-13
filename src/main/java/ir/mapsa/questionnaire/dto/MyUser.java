@@ -3,11 +3,12 @@ package ir.mapsa.questionnaire.dto;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Data
 @Table(name = "tbl_user")
-public class User {
+public class MyUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long Id;
@@ -25,4 +26,10 @@ public class User {
     @Column(name = "user_type")
     private UserType userType;
 
+    @Column(name = "token")
+    private String token;
+
+    @Column(name = "token_expire_time")
+    @Temporal(TemporalType.DATE)
+    private Date tokenExpireTime;
 }

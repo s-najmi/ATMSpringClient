@@ -1,8 +1,6 @@
 package ir.mapsa.questionnaire.userImp;
 
-import ir.mapsa.questionnaire.dto.QuestionDTO;
-import ir.mapsa.questionnaire.dto.UserDTO;
-import ir.mapsa.questionnaire.questionImp.IQuestionService;
+import ir.mapsa.questionnaire.dto.MyUserDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,23 +15,23 @@ public class UserController {
     private final IUserService service;
 
     @GetMapping("/")
-    public ResponseEntity<List<UserDTO>> getAllUsers(){
-        return new ResponseEntity<>((List<UserDTO>) service.getALl(), HttpStatus.OK);
+    public ResponseEntity<List<MyUserDTO>> getAllUsers(){
+        return new ResponseEntity<>((List<MyUserDTO>) service.getALl(), HttpStatus.OK);
     }
 
     @PostMapping("/")
-    public ResponseEntity<UserDTO> addNewUser(@RequestBody UserDTO userDTO){
-        return new ResponseEntity<>((UserDTO)service.save(userDTO),HttpStatus.CREATED);
+    public ResponseEntity<MyUserDTO> addNewUser(@RequestBody MyUserDTO myUserDTO){
+        return new ResponseEntity<>((MyUserDTO)service.save(myUserDTO),HttpStatus.CREATED);
     }
 
     @PutMapping("/")
-    public ResponseEntity<UserDTO> updateUser(@RequestBody UserDTO userDTO){
-        return new ResponseEntity<>((UserDTO)service.save(userDTO),HttpStatus.OK);
+    public ResponseEntity<MyUserDTO> updateUser(@RequestBody MyUserDTO myUserDTO){
+        return new ResponseEntity<>((MyUserDTO)service.save(myUserDTO),HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserDTO> getUserByID(@PathVariable Long id){
-        return new ResponseEntity<>((UserDTO)service.getByID(id), HttpStatus.OK);
+    public ResponseEntity<MyUserDTO> getUserByID(@PathVariable Long id){
+        return new ResponseEntity<>((MyUserDTO)service.getByID(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

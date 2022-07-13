@@ -1,8 +1,8 @@
 package ir.mapsa.questionnaire.generic;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;
-import org.springframework.data.repository.PagingAndSortingRepository;
 
 @NoRepositoryBean
-public interface IGenericRepository<T, PK> extends PagingAndSortingRepository<T, PK> {
+public interface IGenericRepository<T, PK> extends JpaRepository<T, PK> {
 }

@@ -3,8 +3,10 @@ package ir.mapsa.questionnaire.dto;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
-public class UserDTO {
+public class MyUserDTO {
     @ApiModelProperty(required = false)
     private long id;
 
@@ -19,4 +21,10 @@ public class UserDTO {
 
     @ApiModelProperty(required = true, hidden = false)
     private UserType userType;
+
+    @ApiModelProperty(required = false, hidden = true)
+    private String token;
+
+    @ApiModelProperty(required = false, hidden = true)
+    private Date tokenExpireTime;
 }

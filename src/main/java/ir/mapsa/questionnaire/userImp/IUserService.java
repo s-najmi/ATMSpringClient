@@ -1,8 +1,14 @@
 package ir.mapsa.questionnaire.userImp;
 
-import ir.mapsa.questionnaire.dto.User;
-import ir.mapsa.questionnaire.dto.UserDTO;
+import ir.mapsa.questionnaire.dto.MyUser;
+import ir.mapsa.questionnaire.dto.MyUserDTO;
 import ir.mapsa.questionnaire.generic.IGenericService;
 
-public interface IUserService extends IGenericService<User, UserDTO, Long> {
+import java.util.Date;
+import java.util.Optional;
+
+public interface IUserService extends IGenericService<MyUser, MyUserDTO, Long> {
+    String makeToken(MyUser user);
+    Optional<MyUser> findByUserPass(String userName, String password);
+    Date findByToken(String userName, String token);
 }
