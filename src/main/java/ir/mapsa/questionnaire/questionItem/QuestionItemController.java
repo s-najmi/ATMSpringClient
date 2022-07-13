@@ -1,6 +1,7 @@
 package ir.mapsa.questionnaire.questionItem;
 
 import ir.mapsa.questionnaire.dto.QuestionItemDTO;
+import ir.mapsa.questionnaire.security.AccessAPI;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 public class QuestionItemController {
     private final IQuestionItemService service;
+    private final AccessAPI accessAPI;
 
     @GetMapping("/")
     public ResponseEntity<List<QuestionItemDTO>> getAllQuestionItems(){
@@ -20,7 +22,11 @@ public class QuestionItemController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<QuestionItemDTO> addNewQuestion(@RequestBody QuestionItemDTO questionItemDTO){
+    public ResponseEntity<QuestionItemDTO> addNewQuestion(@RequestBody QuestionItemDTO questionItemDTO,
+                                                          @RequestHeader("Authorization") String token){
+        if(accessAPI.findByToken(token) == false){
+            throw new RuntimeException("Not access");
+        }
         return new ResponseEntity<>((QuestionItemDTO) service.save(questionItemDTO),HttpStatus.CREATED);
     }
 

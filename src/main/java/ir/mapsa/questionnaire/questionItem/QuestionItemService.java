@@ -1,12 +1,12 @@
 package ir.mapsa.questionnaire.questionItem;
 
-import ir.mapsa.questionnaire.dto.Question;
 import ir.mapsa.questionnaire.dto.QuestionDTO;
 import ir.mapsa.questionnaire.dto.QuestionItem;
 import ir.mapsa.questionnaire.dto.QuestionItemDTO;
 import ir.mapsa.questionnaire.exception.NotFoundException;
 import ir.mapsa.questionnaire.questionImp.IQuestionMapper;
 import ir.mapsa.questionnaire.questionImp.IQuestionService;
+import ir.mapsa.questionnaire.security.AccessAPI;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -20,7 +20,7 @@ public class QuestionItemService implements IQuestionItemService {
     private final IQuestionService questionService;
     private final IQuestionMapper questionMapper;
 
-    public QuestionItemService(IQuestionItemRepository repository, IQuestionItemMapper mapper, IQuestionService questionService, IQuestionMapper questionMapper) {
+    public QuestionItemService(IQuestionItemRepository repository, IQuestionItemMapper mapper, IQuestionService questionService, IQuestionMapper questionMapper, AccessAPI accessAPI) {
         this.repository = repository;
         this.mapper = mapper;
         this.questionService = questionService;

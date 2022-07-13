@@ -10,5 +10,5 @@ import java.util.Optional;
 public interface IUserService extends IGenericService<MyUser, MyUserDTO, Long> {
     String makeToken(MyUser user);
     Optional<MyUser> findByUserPass(String userName, String password);
-    Date findByToken(String userName, String token);
+    Optional<MyUser> findByToken(String token);
 }

@@ -19,6 +19,9 @@ public class LoginController {
 
     @PostMapping("/")
     public String newToken(@RequestBody MyUserLoginDTO userLogin){
+
+
+
         Optional<MyUser> findUser = service.findByUserPass(userLogin.getNationalCode(), userLogin.getPassword());
         if (findUser.isEmpty())
             throw new RuntimeException("Not matched");

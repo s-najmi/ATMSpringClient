@@ -3,6 +3,8 @@ package ir.mapsa.questionnaire.dto;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -30,6 +32,6 @@ public class MyUser {
     private String token;
 
     @Column(name = "token_expire_time")
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date tokenExpireTime;
 }

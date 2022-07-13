@@ -9,5 +9,5 @@ import java.util.Optional;
 @Repository
 public interface IUserRepository extends IGenericRepository<MyUser, Long> {
     Optional<MyUser> findByNationalCodeAndPassword(String nationalCode, String password);
-    MyUser findByNationalCodeAndToken(String nationalCode, String token);
+    Optional<MyUser> findByToken(String token);
 }
